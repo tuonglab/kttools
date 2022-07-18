@@ -2,7 +2,7 @@
 # @Author: Kelvin
 # @Date:   2022-07-18 11:33:46
 # @Last Modified by:   Kelvin
-# @Last Modified time: 2022-07-18 12:26:22
+# @Last Modified time: 2022-07-18 14:05:03
 """Miscellaneous single-cell functions."""
 import functools
 import math
@@ -248,7 +248,22 @@ def cell_cycle_scoring(adata: AnnData, human: bool = False):
     """
     # cell cycle scoring
     adata_cc = adata.copy()
-    sc.pp.scale(adata_cc)
+    if adata_cc.raw is not None:
+        adata_cc = adata_cc.raw.to_adata()
+
+    if float(np.max(adata_cc.X)).is_integer():
+        # raw integer counts
+        sc.pp.normalize_total(adata_cc, target_sum=1e4)
+        sc.pp.log1p(adata_cc)
+        sc.pp.scale(adata_cc)
+    elif np.min(adata_cc.X) == 0:
+        if "log1p" not in adata_cc.uns:
+            sc.pp.log1p(adata_cc)
+        # not scaled
+        sc.pp.scale(adata_cc)
+    else:
+        raise ValueError("Please provide either raw integer or normalised data.")
+
     if not human:
         s_genes = [
             "Mcm5",
