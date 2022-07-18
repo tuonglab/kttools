@@ -1,5 +1,5 @@
 [project]
-name = "tools"
+name = "kttools"
 version = "0.1.0"
 description = "Miscellaneous python tools"
 authors = [

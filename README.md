@@ -1,4 +1,4 @@
-# kttools
+# tools
 Miscellaneous python tools
 
 
@@ -11,5 +11,5 @@ source ~/.bash_profile # or ~/.bashrc
 
 ### Usage
 ```python
-import tools
+import kttools
 ```
