@@ -2,7 +2,7 @@
 # @Author: Kelvin
 # @Date:   2022-07-18 11:33:46
 # @Last Modified by:   Kelvin
-# @Last Modified time: 2022-07-18 11:39:09
+# @Last Modified time: 2022-07-18 12:24:00
 """Miscellaneous single-cell functions."""
 import functools
 import math
@@ -13,6 +13,8 @@ import pandas as pd
 
 from pandas import DataFrame
 from anndata import AnnData
+
+from typing import List, Union
 
 
 def exportDEres(

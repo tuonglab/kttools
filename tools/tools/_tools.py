@@ -2,7 +2,7 @@
 # @Author: kt16
 # @Date:   2020-07-30 12:52:55
 # @Last Modified by:   Kelvin
-# @Last Modified time: 2022-07-18 11:40:08
+# @Last Modified time: 2022-07-18 12:25:50
 """Miscellaneous functions."""
 import numpy as np
 
@@ -10,7 +10,7 @@ from matplotlib import cm
 from matplotlib.colors import ListedColormap
 from numpy import ndarray
 
-from typing import Optional, List, Dict, Tuple
+from typing import Optional, List, Dict
 
 
 def cmp(palette: str = "viridis") -> ListedColormap:
@@ -83,10 +83,10 @@ def colorRampPalette(
     n : int, optional
         number or colours to return in spectrum.
 
-    No Longer Returned
-    ------------------
-    TYPE
-    Description
+    Returns
+    -------
+    ListedColormap
+        ListedColormap instance with colour gradient.
     """
     if medium is None:
         medium_ = "#FFFFFF"
@@ -186,8 +186,8 @@ def colorRampPalette(
         n : int, optional
             number of colours in spectrum.
 
-        No Longer Returned
-        ------------------
+        Returns
+        -------
         ListedColormap
             a gradient list of (n) colors between two hex colors.
         """
