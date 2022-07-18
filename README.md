@@ -4,7 +4,7 @@ Miscellaneous python tools
 
 ### Install
 ```bash
-pip install git+https://github.com/kttools.git
+pip install https://github.com/clatworthylab/kttools.git
 ```
 
 ### Usage
