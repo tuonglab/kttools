@@ -2,7 +2,7 @@
 # @Author: Kelvin
 # @Date:   2022-07-18 11:33:46
 # @Last Modified by:   Kelvin
-# @Last Modified time: 2022-07-18 12:24:00
+# @Last Modified time: 2022-07-18 12:26:22
 """Miscellaneous single-cell functions."""
 import functools
 import math
@@ -176,11 +176,11 @@ def vmax(adata: AnnData, genes: Union[List, str], pct: float) -> List:
     Parameters
     ----------
     adata : AnnData
-        Description
+        input `AnnData` object.
     genes : Union[List, str]
-        Description
+        gene(s) to query from `AnnData` object.
     pct : float
-        Description
+        percentage to cut-off and return.
 
     Returns
     -------
