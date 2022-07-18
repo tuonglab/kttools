@@ -7,6 +7,9 @@ Miscellaneous python tools
 git clone https://github.com/clatworthylab/kttools.git
 echo 'export PYTHONPATH=/path/to/kttools:$PYTHONPATH' >> ~/.bash_profile # or ~/.bashrc
 source ~/.bash_profile # or ~/.bashrc
+
+# or 
+pip install git+https://github.com/clatworthylab/kttools.git
 ```
 
 ### Usage
@@ -17,7 +20,7 @@ import tools
 
 ### jupyterhub issue
 
-Edit your `kernel.json` file like so:
+On jupyterhub, If you find yourself trying to import from local directory, i.e. `git clone`, and finding that you can't import it, you will need to edit your your `kernel.json` file like so:
 
 ```bash
 vi /home/jovyan/.local/share/jupyter/kernels/dandelion/kernel.json 
