@@ -11,5 +11,5 @@ source ~/.bash_profile # or ~/.bashrc
 
 ### Usage
 ```python
-import kttools
+import tools
 ```
