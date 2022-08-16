@@ -2,9 +2,10 @@
 # @Author: Kelvin
 # @Date:   2022-07-18 11:53:22
 # @Last Modified by:   Kelvin
-# @Last Modified time: 2022-07-18 12:00:45
+# @Last Modified time: 2022-08-16 14:19:43
 """tools module."""
 from ._tools import (
+    alpha_code,
     cmp,
     get_hex,
     colorRampPalette,
@@ -14,6 +15,7 @@ from ._tools import (
 
 __all__ = [
     # miscellaneous
+    "alpha_code",
     "cmp",
     "get_hex",
     "colorRampPalette",
