@@ -2,7 +2,7 @@
 # @Author: Kelvin
 # @Date:   2022-07-18 11:33:46
 # @Last Modified by:   Kelvin
-# @Last Modified time: 2022-11-17 15:36:53
+# @Last Modified time: 2022-11-17 16:09:57
 """Miscellaneous single-cell functions."""
 import functools
 import math
@@ -488,10 +488,12 @@ def combine_two_categories(adata: AnnData, A: str, B: str, sep: str = "_") -> No
     adata.obs[A] = adata.obs[A].astype("category")
     adata.obs[B] = adata.obs[B].astype("category")
     a_cat = adata.obs[A].cat.categories
-    b_cat = adata.obs[b].cat.categories
+    b_cat = adata.obs[B].cat.categories
     cats = []
     for a in a_cat:
         for b in b_cat:
             cats.append(a + "_" + b)
     adata.obs[comb_cat] = adata.obs[comb_cat].astype("category")
-    adata.obs[comb_cat] = adata.obs[comb_cat].cat.reorder_categories(cats)
+    adata.obs[comb_cat] = adata.obs[comb_cat].cat.reorder_categories(
+        [c for c in cats if c in adata.obs[comb_cat].cat.categories]
+    )
