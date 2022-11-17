@@ -2,7 +2,7 @@
 # @Author: Kelvin
 # @Date:   2022-07-18 11:33:46
 # @Last Modified by:   Kelvin
-# @Last Modified time: 2022-07-18 14:05:03
+# @Last Modified time: 2022-11-17 15:36:53
 """Miscellaneous single-cell functions."""
 import functools
 import math
@@ -467,3 +467,31 @@ def cell_cycle_scoring(adata: AnnData, human: bool = False):
     )
     for x in ["S_score", "G2M_score", "phase"]:
         adata.obs[x] = adata_cc.obs[x]
+
+
+def combine_two_categories(adata: AnnData, A: str, B: str, sep: str = "_") -> None:
+    """Combine two categories in place, respecting the order of the concatenation.
+
+    Parameters
+    ----------
+    adata : AnnData
+        Input anndata object.
+    A : str
+        Column name for first category.
+    B : str
+        Column name for second category.
+    sep : str, optional
+        The separator to combine the names.
+    """
+    comb_cat = A + sep + B
+    adata.obs[comb_cat] = [a + "_" + b for a, b in zip(adata.obs[A], adata.obs[B])]
+    adata.obs[A] = adata.obs[A].astype("category")
+    adata.obs[B] = adata.obs[B].astype("category")
+    a_cat = adata.obs[A].cat.categories
+    b_cat = adata.obs[b].cat.categories
+    cats = []
+    for a in a_cat:
+        for b in b_cat:
+            cats.append(a + "_" + b)
+    adata.obs[comb_cat] = adata.obs[comb_cat].astype("category")
+    adata.obs[comb_cat] = adata.obs[comb_cat].cat.reorder_categories(cats)
