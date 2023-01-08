@@ -5,8 +5,7 @@ Miscellaneous python tools
 ### Install
 ```bash
 git clone https://github.com/zktuong/kttools.git
-echo 'export PYTHONPATH=/path/to/kttools:$PYTHONPATH' >> ~/.bash_profile # or ~/.bashrc
-source ~/.bash_profile # or ~/.bashrc
+cd kttools; pip install -e .
 
 # or 
 pip install git+https://github.com/zktuong/kttools.git
