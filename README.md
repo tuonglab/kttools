@@ -1,7 +1,7 @@
 # tools
 Kelvin's miscellaneous python tools
 
-Please checkout the documentation [api]() for details about the functions you can use to make your life easier.
+Please checkout the documentation [api](https://kttools.readthedocs.org) for details about the functions you can use to make your life easier.
 
 ### Install
 ```bash
