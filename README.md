@@ -4,16 +4,19 @@ Miscellaneous python tools
 
 ### Install
 ```bash
-git clone https://github.com/zktuong/kttools.git
-cd kttools; pip install -e .
+pip install kttools
 
 # or 
 pip install git+https://github.com/zktuong/kttools.git
+
+# or
+git clone https://github.com/zktuong/kttools.git
+cd kttools; pip install -e .
 ```
 
 ### Usage
 ```python
-from kttools import tools
+import tools
 ```
 
 
