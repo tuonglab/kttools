@@ -1,6 +1,7 @@
 # tools
-Miscellaneous python tools
+Kelvin's miscellaneous python tools
 
+Please checkout the documentation [api]() for details about the functions you can use to make your life easier.
 
 ### Install
 ```bash
@@ -16,7 +17,7 @@ cd kttools; pip install -e .
 
 ### Usage
 ```python
-import tools
+import tools 
 ```
 
 
