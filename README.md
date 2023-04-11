@@ -13,7 +13,7 @@ pip install git+https://github.com/zktuong/kttools.git
 
 ### Usage
 ```python
-import tools
+from kttools import tools
 ```
 
 
