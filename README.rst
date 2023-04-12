@@ -1,5 +1,7 @@
-tools
-=====
+|Docs| |PyPI|
+
+kttools
+=======
 
 Kelvin’s miscellaneous python tools
 
@@ -58,3 +60,8 @@ add in the ``$PATH`` and ``$PYTHONPATH`` bits:
     "display_name": "Python (<condaenvironmentname>)",
     "language": "python"
    }
+
+.. |Docs| image:: https://readthedocs.org/projects/kttools/badge/?version=latest
+   :target: https://kttools.readthedocs.io/en/latest/?badge=latest
+.. |PyPI| image:: https://img.shields.io/pypi/v/kttools?logo=PyPI
+   :target: https://pypi.org/project/kttools/
