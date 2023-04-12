@@ -4,7 +4,7 @@ version = "0.2.0"
 description = "Kelvin's miscellaneous tools for python"
 authors = ["Zewen Kelvin Tuong <z.tuong@uq.edu.au>"]
 license = "MIT"
-readme = "README.md"
+readme = "README.rst"
 classifiers = [
     'Intended Audience :: Developers',
     'Intended Audience :: Science/Research',
