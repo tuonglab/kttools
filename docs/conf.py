@@ -21,7 +21,6 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx_autodoc_typehints",
     "sphinx_rtd_theme",
-    "nbsphinx",
     "sphinx.ext.viewcode",
     "sphinx.ext.mathjax",
     "recommonmark",
@@ -37,7 +36,7 @@ nitpick_ignore = [("py:class", "type")]
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = "alabaster"
+html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
 
 # html_logo = "notebooks/logo.png"
