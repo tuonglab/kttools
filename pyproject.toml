@@ -13,12 +13,12 @@ classifiers = [
 packages = [{ include = "tools" }]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-pandas = "^1.2.4"
-numpy = "^1.21.6"
-matplotlib = "^3.5.2"
-scanpy = "^1.7.1"
-anndata = "^0.7.6"
+python = ">=3.8"
+pandas = ">=1.2.4"
+numpy = ">=1.21.6"
+matplotlib = ">=3.5.2"
+scanpy = ">=1.7.1"
+anndata = ">=0.7.6"
 sphinx-autodoc-typehints = { optional = true, version = "*" }
 sphinx_rtd_theme = { optional = true, version = "*" }
 readthedocs-sphinx-ext = { optional = true, version = "*" }
