@@ -14,7 +14,7 @@ packages = [{ include = "tools" }]
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.11"
-pandas = ">=1.2.4,<2.0.1"
+pandas = ">=1.2.4,<2.0.2"
 numpy = ">=1.21.6,<1.24.4"
 matplotlib = ">=3.5.2,<3.7.2"
 scanpy = ">=1.7.1,<1.9.4"
