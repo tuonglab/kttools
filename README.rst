@@ -13,10 +13,10 @@ Install
    pip install kttools
 
    # or 
-   pip install git+https://github.com/zktuong/kttools.git
+   pip install git+https://github.com/tuonglab/kttools.git
 
    # or
-   git clone https://github.com/zktuong/kttools.git
+   git clone https://github.com/tuonglab/kttools.git
    cd kttools; pip install -e .
 
 Usage
