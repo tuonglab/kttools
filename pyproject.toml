@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "kttools"
-version = "0.2.1"
+version = "0.2.2"
 description = "Kelvin's miscellaneous tools for python"
 authors = ["Zewen Kelvin Tuong <z.tuong@uq.edu.au>"]
 license = "MIT"
