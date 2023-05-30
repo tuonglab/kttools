@@ -5,7 +5,7 @@
 # @Last Modified time: 2022-07-18 12:00:49
 """single cell module."""
 
-from ._sc import exportDEres, returnDEres, vmax, vmin, cell_cycle_scoring
+from ._sc import exportDEres, returnDEres, vmax, vmin, cell_cycle_scoring, combine_two_categories
 
 __all__ = [
     # single-cell
@@ -14,4 +14,5 @@ __all__ = [
     "vmax",
     "vmin",
     "cell_cycle_scoring",
+    "combine_two_categories",
 ]
