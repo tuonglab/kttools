@@ -12,6 +12,7 @@ from ._sc import (
     vmin,
     cell_cycle_scoring,
     combine_two_categories,
+    dotplot_2obs,
 )
 
 __all__ = [
@@ -22,4 +23,5 @@ __all__ = [
     "vmin",
     "cell_cycle_scoring",
     "combine_two_categories",
+    "dotplot_2obs",
 ]
