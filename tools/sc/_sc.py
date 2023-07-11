@@ -6,14 +6,15 @@
 """Miscellaneous single-cell functions."""
 import functools
 import math
+import scipy.sparse
 
 import numpy as np
 import scanpy as sc
 import pandas as pd
 
-from pandas import DataFrame
 from anndata import AnnData
-
+from pandas import DataFrame
+from scanpy.pl._dotplot import DotPlot
 from typing import List, Union
 
 
@@ -497,3 +498,78 @@ def combine_two_categories(adata: AnnData, A: str, B: str, sep: str = "_") -> No
     adata.obs[comb_cat] = adata.obs[comb_cat].cat.reorder_categories(
         [c for c in cats if c in adata.obs[comb_cat].cat.categories]
     )
+
+
+def dotplot_2obs(
+    adata, gene, x_axis, y_axis, x_order=None, y_order=None, use_raw=True, fill_na=True
+):
+    """
+    A function that extracts the expression for a provided gene,
+    and subsequently prepares a dotplot where the two axes are
+    two categoricals from the obs of the object.
+
+    Can be controlled between .raw and .X via use_raw (defaults to raw)
+    By default fills nonexistent obs combinations as zeroes in the plot
+    (as otherwise the plot can error in weird ways sometimes).
+
+    Thanks kp9!
+    """
+    # prepare dfs with dot sizes and colours
+    # start off by making a helper df with all the info
+    obs_tidy_master = adata.obs[[y_axis, x_axis]].set_index(y_axis)
+    # add gene expression
+    if use_raw:
+        if scipy.sparse.issparse(adata.raw.X):
+            obs_tidy_master[gene] = adata.raw[:, gene].X.todense()
+        else:
+            obs_tidy_master[gene] = np.array(adata.raw[:, gene].X)
+    else:
+        if scipy.sparse.issparse(adata.X):
+            obs_tidy_master[gene] = adata[:, gene].X.todense()
+        else:
+            obs_tidy_master[gene] = np.array(adata[:, gene].X)
+    # this is where our computed values will go
+    dot_size_df = pd.DataFrame(
+        0,
+        index=np.unique(obs_tidy_master.index),
+        columns=np.unique(obs_tidy_master[x_axis]),
+    )
+    # reorder the groups if specified
+    if x_order is not None:
+        dot_size_df = dot_size_df[x_order]
+    if y_order is not None:
+        dot_size_df = dot_size_df.loc[y_order, :]
+    dot_color_df = dot_size_df.copy()
+    # compute the sizes and colors, replicating the logic found within DotPlot()
+    for cat in dot_size_df.columns:
+        obs_tidy = obs_tidy_master.loc[obs_tidy_master[x_axis] == cat, gene]
+        obs_bool = obs_tidy > 0
+        dot_color_df[cat] = obs_tidy.groupby(level=0).mean().fillna(0)
+        dot_size_df[cat] = (
+            obs_bool.groupby(level=0).sum() / obs_bool.groupby(level=0).count()
+        )
+    # some combinations may be absent, and there will be NaNs there, and this sometimes kills the plot
+    # fill with zeroes if specified
+    if fill_na:
+        dot_color_df.fillna(0, inplace=True)
+        dot_size_df.fillna(0, inplace=True)
+    # in order to actually plot this, we need to make a dummy anndata object
+    # just how DotPlot() is wired internally
+    bdata = AnnData(np.zeros(dot_size_df.shape))
+    bdata.var_names = dot_size_df.columns
+    # this needs to be turned to a list or it whines about a conflict later
+    bdata.obs_names = list(dot_size_df.index)
+    # the grouping variable needs to be present in the dummy object
+    # its existence is checked, it actually does nothing when we insert the dot sizes
+    bdata.obs[y_axis] = dot_size_df.index
+    # actually make the dotplot, with the best colour scheme :P
+    dp = DotPlot(
+        bdata,
+        dot_size_df.columns,
+        y_axis,
+        dot_size_df=dot_size_df,
+        dot_color_df=dot_color_df,
+        title=gene,
+    )
+    dp = dp.style(cmap="OrRd")
+    dp.make_figure()
