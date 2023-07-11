@@ -5,6 +5,7 @@ tools
 .. autosummary::
    :toctree: modules
 
+   dotplot_2obs
    alpha_code
    calc_centroid
    cell_cycle_scoring

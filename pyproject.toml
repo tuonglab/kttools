@@ -26,10 +26,10 @@ recommonmark = { optional = true, version = "*" }
 
 [tool.poetry.extras]
 docs = [
-    "sphinx-autodoc-typehints",
-    "sphinx_rtd_theme",
-    "readthedocs-sphinx-ext",
-    "recommonmark",
+    "sphinx-autodoc-typehints<=1.23.0",
+    "sphinx_rtd_theme<=1.2.0",
+    "readthedocs-sphinx-ext<=2.2.0",
+    "recommonmark<=0.7.1",
 ]
 
 [tool.poetry.group.dev.dependencies]
