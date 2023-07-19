@@ -509,6 +509,7 @@ def dotplot_2obs(
     y_order=None,
     use_raw=True,
     fill_na=True,
+    show_plot=True,
     **kwargs
 ):
     """
@@ -580,5 +581,6 @@ def dotplot_2obs(
         title=gene,
         **kwargs,
     )
-    # dp = dp.style(cmap="OrRd")
-    dp.make_figure()
+    if show_plot:
+        dp.show()
+    return dp
