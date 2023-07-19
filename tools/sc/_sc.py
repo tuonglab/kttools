@@ -501,7 +501,15 @@ def combine_two_categories(adata: AnnData, A: str, B: str, sep: str = "_") -> No
 
 
 def dotplot_2obs(
-    adata, gene, x_axis, y_axis, x_order=None, y_order=None, use_raw=True, fill_na=True
+    adata,
+    gene,
+    x_axis,
+    y_axis,
+    x_order=None,
+    y_order=None,
+    use_raw=True,
+    fill_na=True,
+    **kwargs
 ):
     """
     A function that extracts the expression for a provided gene,
@@ -570,6 +578,7 @@ def dotplot_2obs(
         dot_size_df=dot_size_df,
         dot_color_df=dot_color_df,
         title=gene,
+        **kwargs,
     )
-    dp = dp.style(cmap="OrRd")
+    # dp = dp.style(cmap="OrRd")
     dp.make_figure()
