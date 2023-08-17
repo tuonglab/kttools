@@ -140,10 +140,15 @@ def returnDEres(
         dfs = [scores, lfc, pvals, padj, pts, ptsx]
     except:
         dfs = [scores, lfc, pvals, padj]
-    df_final = functools.reduce(
-        lambda left, right: pd.merge(left, right, left_index=True, right_index=True),
-        dfs,
-    )
+    try:
+        df_final = functools.reduce(
+            lambda left, right: pd.merge(
+                left, right, left_index=True, right_index=True
+            ),
+            dfs,
+        )
+    except:
+        df_final = pd.concat(dfs, axis=1)
     try:
         df_final.columns = [
             "scores",
