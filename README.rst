@@ -12,7 +12,7 @@ Install
 
    pip install kttools
 
-   # or 
+   # or
    pip install git+https://github.com/tuonglab/kttools.git
 
    # or
@@ -24,7 +24,7 @@ Usage
 
 .. code:: python
 
-   import tools 
+   import tools
 
 Please checkout the documentation
 `api <https://kttools.readthedocs.org>`__ for details about the
@@ -39,7 +39,7 @@ will need to edit your your ``kernel.json`` file like so:
 
 .. code:: bash
 
-   vi /home/jovyan/.local/share/jupyter/kernels/<condaenvironmentname>/kernel.json 
+   vi /home/jovyan/.local/share/jupyter/kernels/<condaenvironmentname>/kernel.json
 
 add in the ``$PATH`` and ``$PYTHONPATH`` bits:
 
