@@ -6,7 +6,7 @@
 """Miscellaneous functions."""
 import numpy as np
 
-from matplotlib import cm
+import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 from numpy import ndarray
 
@@ -20,14 +20,14 @@ def cmp(palette: str = "viridis") -> ListedColormap:
     Parameters
     ----------
     palette : str, optional
-        Accepts palette accepted by `matplotlib.cm.get_cmap`.
+        Accepts palette accepted by `matplotlib.pyplot.get_cmap`.
 
     Returns
     -------
     ListedColormap
         ListedColormap instance with grey as the first colour.
     """
-    viridis = cm.get_cmap(palette, 256)
+    viridis = plt.get_cmap(palette, 256)
     newcolors = viridis(np.linspace(0, 1, 256))
     grey = np.array([215 / 256, 215 / 256, 215 / 256, 1])
     newcolors[:1, :] = grey
@@ -42,7 +42,7 @@ def get_hex(pal: str, n: Optional[int] = None) -> List:
     Parameters
     ----------
     pal : str
-        Accepts palette accepted by `matplotlib.cm.get_cmap`.
+        Accepts palette accepted by `matplotlib.pyplot.get_cmap`.
     n : Optional[int], optional
         Number of colours to return.
 
@@ -55,7 +55,7 @@ def get_hex(pal: str, n: Optional[int] = None) -> List:
         n = 5
     else:
         n = n
-    cmap = cm.get_cmap(pal, n)  # PiYG
+    cmap = plt.get_cmap(pal, n)  # PiYG
 
     cols = []
     for i in range(cmap.N):
