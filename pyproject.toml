@@ -16,9 +16,9 @@ packages = [{ include = "tools" }]
 python = ">=3.8"
 pandas = "*"
 numpy = "*"
-matplotlib = ">=3.5.2,<=3.9.1"
-scanpy = ">=1.7.1,<=1.10.3"
-anndata = ">=0.7.6,<=0.10.9"
+matplotlib = "<3.10.2"
+scanpy = "<1.11.1"
+anndata = "<0.11.4"
 sphinx-autodoc-typehints = { optional = true, version = "<=1.23.0" }
 sphinx_rtd_theme = { optional = true, version = "<=1.2.0" }
 readthedocs-sphinx-ext = { optional = true, version = "<=2.2.0" }
