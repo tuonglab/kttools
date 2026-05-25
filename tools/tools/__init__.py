@@ -4,6 +4,7 @@
 # @Last Modified by:   Kelvin
 # @Last Modified time: 2022-08-16 14:19:43
 """tools module."""
+
 from ._tools import (
     alpha_code,
     cmp,
